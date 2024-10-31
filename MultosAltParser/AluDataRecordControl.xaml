@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="MultosAltParser.AluDataRecordControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008">
+    <ScrollViewer>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- MCD Number -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="MCD Number:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtMcdNumber" IsReadOnly="True"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="8 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <!-- Code Record -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Code Record Length:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtCodeRecordLength" IsReadOnly="True"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="2 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Code Record:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="txtCodeRecord" 
+                     IsReadOnly="True" TextWrapping="Wrap" Height="100" 
+                     VerticalScrollBarVisibility="Auto"/>
+
+            <!-- Data Record -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Data Record Length:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtDataRecordLength" IsReadOnly="True"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="2 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Data Record:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="txtDataRecord" 
+                     IsReadOnly="True" TextWrapping="Wrap" Height="100" 
+                     VerticalScrollBarVisibility="Auto"/>
+
+            <!-- DIR Record -->
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="DIR Record Length:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtDirRecordLength" IsReadOnly="True"/>
+            <TextBlock Grid.Row="5" Grid.Column="2" Text="2 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="DIR Record:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" x:Name="txtDirRecord" 
+                     IsReadOnly="True" TextWrapping="Wrap" Height="100" 
+                     VerticalScrollBarVisibility="Auto"/>
+
+            <!-- FCI Record -->
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="FCI Record Length:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtFciRecordLength" IsReadOnly="True"/>
+            <TextBlock Grid.Row="7" Grid.Column="2" Text="2 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="FCI Record:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" x:Name="txtFciRecord" 
+                     IsReadOnly="True" TextWrapping="Wrap" Height="100" 
+                     VerticalScrollBarVisibility="Auto"/>
+
+            <!-- App Signature Length -->
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="App Signature Length:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="9" Grid.Column="1" x:Name="txtAppSignatureLength" IsReadOnly="True"/>
+            <TextBlock Grid.Row="9" Grid.Column="2" Text="2 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <!-- KTU Length -->
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="KTU Length:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="10" Grid.Column="1" x:Name="txtKtuLength" IsReadOnly="True"/>
+            <TextBlock Grid.Row="10" Grid.Column="2" Text="2 bytes" Foreground="Gray" 
+                     Margin="5,0,0,0" VerticalAlignment="Center"/>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,227 @@
+﻿<local:BaseWindow x:Class="MultosAltParser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MultosAltParser"
+        Background="{StaticResource BackgroundBrush}"
+        Title="MULTOS ALT Parser" Height="600" Width="800" FontSize="14">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <!-- Title Bar Height -->
+            <RowDefinition/>
+            <!-- Content Area -->
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <SolidColorBrush Color="{StaticResource LightBackgroundColor}"/>
+            </Grid.Background>
+
+            <Grid Margin="3,10,5,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="46"/>
+                    <ColumnDefinition Width="46"/>
+                    <ColumnDefinition Width="46"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Window Icon -->
+                <Image Grid.Column="0"
+               Width="16" Height="16"
+               Margin="8,0,4,0"
+               VerticalAlignment="Center"
+               Source="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}, Path=Icon}"/>
+
+                <!-- Window Title -->
+                <Grid Background="Transparent" Grid.ColumnSpan="2" Margin="13,0,15,0">
+                    <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}, Path=Title}"
+                      Foreground="{DynamicResource TextBrush}"
+                      VerticalAlignment="Center"
+                      Margin="4,0,0,0"/>
+                </Grid>
+
+                <!-- Window Buttons -->
+                <Button x:Name="MinimizeButton" 
+                Grid.Column="2"
+                Height="36"
+                Style="{StaticResource WindowButtonStyle}"
+                Content="&#xE949;"
+                FontFamily="Segoe MDL2 Assets"
+                Click="MinimizeClick"/>
+
+                <Button x:Name="MaximizeButton" 
+                Grid.Column="3"
+                Height="36"
+                Style="{StaticResource WindowButtonStyle}"
+                Content="&#xE739;"
+                FontFamily="Segoe MDL2 Assets"
+                Click="MaximizeClick"/>
+
+                <Button x:Name="CloseButton" 
+                Grid.Column="4"
+                Height="36"
+                Style="{StaticResource CloseButtonStyle}"
+                Content="&#xE106;"
+                FontFamily="Segoe MDL2 Assets"
+                Click="CloseClick" Margin="0,-1,0,1"/>
+
+                <!-- Bottom Border -->
+                <Border Grid.ColumnSpan="5" 
+                Height="1" 
+                VerticalAlignment="Bottom" 
+                Background="{DynamicResource BorderBrush}" Margin="0,0,0,-10"/>
+            </Grid>
+        </Grid>
+
+        <!-- Content Area -->
+        <Grid Grid.Row="1" Margin="10,10,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Panel -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                <Button x:Name="btnOpenFile" Content="Open ALT File" 
+                    Click="BtnOpenFile_Click" 
+                    Width="120" HorizontalAlignment="Left" FontSize="14" Height="25"/>
+                <TextBlock x:Name="txtSelectedFile" Margin="0,5,0,0" 
+                      Text="No file selected" Foreground="Gray"/>
+            </StackPanel>
+
+            <!-- Main Content -->
+            <TabControl Grid.Row="1">
+                <!-- File Header Tab -->
+                <TabItem Header="File Header" FontSize="14">
+                    <ScrollViewer>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- File Header Properties -->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="File Type:"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtFileType" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Protection Method:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtProtectionMethod" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Structure Method:"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtStructureMethod" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Consignment ID:"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtConsignmentId" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="File Date:"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtFileDate" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="File Time:"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtFileTime" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="6" Grid.Column="0" Text="Consignment File ID:"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtConsignmentFileId" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="7" Grid.Column="0" Text="Issuer ID:"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtIssuerId" BorderBrush="Transparent"/>
+
+                            <TextBlock Grid.Row="8" Grid.Column="0" Text="MULTOS Issuer ID:"/>
+                            <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtMultosIssuerId" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="9" Grid.Column="0" Text="File Hash:"/>
+                            <TextBox Grid.Row="9" Grid.Column="1" x:Name="txtFileHash"  
+                                 TextWrapping="Wrap" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="10" Grid.Column="0" Text="Number of Templates:"/>
+                            <TextBox Grid.Row="10" Grid.Column="1" x:Name="txtTemplateCount" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+                <!-- Template Header Tab -->
+                <TabItem Header="Template Header" FontSize="14">
+                    <ScrollViewer>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Template Header Properties -->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Issuer Template ID:"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtIssuerTemplateId" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Software Product ID:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtSoftwareProductId" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="KMA Hash Modulus:"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtKmaHashModulus" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Certificate Serial:"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtCertificateSerial" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Provider Key Set ID:"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtProviderKeySetId" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="Master Key Index:"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtMasterKeyIndex" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="6" Grid.Column="0" Text="ALU Record Length:"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtAluRecordLength" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="7" Grid.Column="0" Text="PDA Record Length:"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtPdaRecordLength" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="8" Grid.Column="0" Text="PDA Record Count:"/>
+                            <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtPdaRecordCount" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="9" Grid.Column="0" Text="Session Data Length:"/>
+                            <TextBox Grid.Row="9" Grid.Column="1" x:Name="txtSessionDataLength" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+                <!-- ALU Data Record Tab -->
+                <TabItem Header="ALU Data Record" FontSize="14">
+                    <local:AluDataRecordControl x:Name="aluDataControl"/>
+                </TabItem>
+
+                <!-- PDA Records Tab -->
+                <TabItem Header="PDA Records" FontSize="14">
+                    <local:PdaRecordsControl x:Name="pdaRecordsControl"/>
+                </TabItem>
+                <!-- Data Prep Tan-->
+                <TabItem Header="Data Preparation" FontSize="14">
+                    <local:DataPreparationControl x:Name="dataPreparationControl"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</local:BaseWindow>
